@@ -5,7 +5,6 @@ delete window.Rusha
 
 module.exports = function(buf, raw) {
   var rusha = new Rusha 
-  var method = 'digest'
-  if (raw) method += 'Raw'
+  var method = raw ? 'rawDigest' : 'digest'
   return rusha[method](buf)
 }

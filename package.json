@@ -1,6 +1,6 @@
 {
   "name": "simple-sha1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A little wrapper to make high-performance sha1 hashes easy in node and the browser.",
   "main": "index.js",
   "browser": "browser.js",
