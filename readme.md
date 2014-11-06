@@ -8,3 +8,11 @@ var sha1 = require('simple-sha1')
 console.log(sha1('simple-sha1'))
 > e6b180cd95b3dc67e8f1be093aea584c623f44ee
 ```
+
+## install
+```sh
+$ npm install michaelrhodes/simple-sha1
+```
+
+## license
+[MIT](http://opensource.org/licenses/MIT)
