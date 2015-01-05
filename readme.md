@@ -3,6 +3,8 @@ simple-sha1 wraps two fast SHA1 implementations, and exposes a simple api for ge
 
 [![Build status](https://travis-ci.org/michaelrhodes/simple-sha1.png?branch=master)](https://travis-ci.org/michaelrhodes/simple-sha1)
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/simple-sha1.svg)](https://saucelabs.com/u/simple-sha1)
+
 ## install
 ```sh
 $ npm install simple-sha1

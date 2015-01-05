@@ -5,8 +5,10 @@
   "main": "index.js",
   "browser": "browser.js",
   "scripts": {
-    "test": "tape test/*.js",
-    "test-browser": "zuul --local -- test/*.js",
+    "test": "npm run test-node && npm run test-browser",
+    "test-node": "tape test/*.js",
+    "test-browser": "zuul -- test/*.js",
+    "test-browser-local": "zuul --local -- test/*.js",
     "example": "beefy example.js"
   },
   "repository": {
