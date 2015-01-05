@@ -14,7 +14,7 @@ $ npm install simple-sha1
 ```js
 var sha1 = require('simple-sha1')
 
-console.log(sha1('simple-sha1'))
+console.log(sha1.sync('simple-sha1'))
 > e6b180cd95b3dc67e8f1be093aea584c623f44ee
 ```
 
