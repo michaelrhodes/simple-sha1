@@ -1,6 +1,8 @@
 # simple-sha1
 simple-sha1 wraps two fast SHA1 implementations, and exposes a simple api for generating hashes in node ([crypto](http://nodejs.org/api/crypto.html)) and the browser ([Rusha](https://github.com/srijs/rusha)).
 
+[![Build status](https://travis-ci.org/michaelrhodes/simple-sha1.png?branch=master)](https://travis-ci.org/michaelrhodes/simple-sha1)
+
 ## install
 ```sh
 $ npm install simple-sha1
