@@ -1,5 +1,5 @@
 # simple-sha1
-simple-sha1 wraps two fast SHA1 implementations, and exposes a simple api for generating hashes in node ([crypto](http://nodejs.org/api/crypto.html)) and the browser ([Rusha](https://github.com/srijs/rusha)).
+simple-sha1 wraps three fast SHA1 implementations, and exposes a simple api for generating hashes in node ([crypto](http://nodejs.org/api/crypto.html)) and the browser ([WebCryptoAPI](http://www.w3.org/TR/WebCryptoAPI/) || [Rusha](https://github.com/srijs/rusha)).
 
 [![Build status](https://travis-ci.org/michaelrhodes/simple-sha1.png?branch=master)](https://travis-ci.org/michaelrhodes/simple-sha1)
 
@@ -14,8 +14,21 @@ $ npm install simple-sha1
 ```js
 var sha1 = require('simple-sha1')
 
-console.log(sha1.sync('simple-sha1'))
-> e6b180cd95b3dc67e8f1be093aea584c623f44ee
+// Because the WebCryptoAPI uses Promises (shudder),
+// you have to pass a callback if you want to take
+// advantage of its mad-sick performace.
+
+sha1('hey there', function (hash) {
+  console.log(hash)
+  > 6b1c01703b68cf9b35ab049385900b5c428651b6
+})
+
+// However, if you don’t mind always using Rusha in
+// the browser, you can just call sha1.sync and be
+// done with it.
+
+console.log(sha1.sync('hey there'))
+> 6b1c01703b68cf9b35ab049385900b5c428651b6
 ```
 
 ## license
