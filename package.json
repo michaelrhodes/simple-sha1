@@ -9,7 +9,8 @@
     "test-node": "tape test/*.js",
     "test-browser": "zuul -- test/*.js",
     "test-browser-local": "zuul --local -- test/*.js",
-    "example": "beefy example.js"
+    "example": "beefy example.js",
+    "benchmark": "beefy benchmark.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,8 @@
   },
   "devDependencies": {
     "beefy": "^2.1.1",
+    "benchmark": "^1.0.0",
+    "git-sha1": "^0.1.2",
     "tape": "^3.0.3",
     "zuul": "^1.16.3"
   }
