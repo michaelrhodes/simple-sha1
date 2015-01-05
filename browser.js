@@ -6,7 +6,7 @@ delete window.Rusha // Rusha inserts a global for some reason
 
 var rusha = new Rusha() // Re-use the same Rusha instance
 
-var crypto = window.crypto || window.msCrypto
+var crypto = window.crypto || window.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
 
 function sha1 (buf, cb) {
