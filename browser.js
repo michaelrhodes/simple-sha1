@@ -1,49 +1,52 @@
-module.exports = sha1
-module.exports.sync = sha1Sync
-
 var Rusha = require('rusha')
-delete window.Rusha // Rusha inserts a global for some reason
 
-var rusha = new Rusha() // Re-use the same Rusha instance
-
+var rusha = new Rusha
 var crypto = window.crypto || window.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
 
+// Rusha inserts a global for some reason
+delete window.Rusha 
+
 function sha1 (buf, cb) {
-  if (subtle) {
-    // prefer WebCrypto API
-    if (typeof buf === 'string') buf = stringToTypedArray(buf)
-    subtle.digest({ name: 'sha-1' }, buf).then(function (result) {
-      cb(typedArrayToHexString(new Uint8Array(result)))
-    })
-  } else {
-    // Fallback to Rusha
-    var hash = sha1Sync(buf)
-    setTimeout(function () {
-      cb(hash)
-    }, 0)
+  if (!subtle) {
+    // Use Rusha
+    setTimeout(cb, 0, sha1sync(buf))
+    return
   }
+
+  if (typeof buf === 'string') {
+    buf = uint8array(buf)
+  }
+
+  subtle.digest({ name: 'sha-1' }, buf)
+    .then(function (result) {
+      cb(hex(new Uint8Array(result)))
+    })
 }
 
-function sha1Sync (buf) {
+function sha1sync (buf) {
   return rusha.digest(buf)
 }
 
-function stringToTypedArray (s) {
-  var plaintextBuf = new Uint8Array(s.length)
-  for (var i = 0; i < s.length; i++) {
-    plaintextBuf[i] = s.charCodeAt(i)
+function uint8array (s) {
+  var l = s.length
+  var array = new Uint8Array(l)
+  for (var i = 0; i < l; i++) {
+    array[i] = s.charCodeAt(i)
   }
-  return plaintextBuf
+  return array
 }
 
-function typedArrayToHexString (buf) {
-  var hexChars = []
-  for (var i = 0; i < buf.length; i++) {
+function hex (buf) {
+  var l = buf.length
+  var chars = []
+  for (var i = 0; i < l; i++) {
     var bite = buf[i]
-    hexChars.push((bite >>> 4).toString(16))
-    hexChars.push((bite & 0x0f).toString(16))
+    chars.push((bite >>> 4).toString(16))
+    chars.push((bite & 0x0f).toString(16))
   }
-  var hexString =  hexChars.join('')
-  return hexString
+  return chars.join('')
 }
+
+module.exports = sha1
+module.exports.sync = sha1sync
