@@ -5,7 +5,8 @@
   "main": "index.js",
   "browser": "browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tape test/*.js",
+    "test-browser": "zuul --local -- test/*.js",
     "example": "beefy example.js"
   },
   "repository": {
@@ -29,6 +30,8 @@
     "rusha": "^0.7.7"
   },
   "devDependencies": {
-    "beefy": "^2.1.1"
+    "beefy": "^2.1.1",
+    "tape": "^3.0.3",
+    "zuul": "^1.16.3"
   }
 }
