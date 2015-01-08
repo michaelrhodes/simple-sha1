@@ -6,6 +6,7 @@
   "browser": "browser.js",
   "scripts": {
     "test": "npm run test-node && npm run test-browser",
+    "test-local": "npm run test-node && npm run test-browser-local",
     "test-node": "tape test/*.js",
     "test-browser": "zuul -- test/*.js",
     "test-browser-local": "zuul --local -- test/*.js",

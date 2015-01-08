@@ -32,6 +32,8 @@ function complete () {
   if (process.browser) {
     var crypto = window.crypto || window.msCrypto || {}
     var subtle = crypto.subtle || crypto.webkitSubtle
+    try { subtle.digest({ name: 'sha-1'}, new Uint8Array) }
+    catch (err) { subtle = false }
     if (subtle) console.log('sha1 used WebCryptoAPI')
   }
   console.log('Fastest is ' + this.filter('fastest').pluck('name'))
