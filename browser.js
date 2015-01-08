@@ -4,7 +4,11 @@ var rusha = new Rusha
 var crypto = window.crypto || window.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
 
-// Rusha inserts a global for some reason
+// Browsers throw if they lack support for an algorithm.
+try { subtle.digest({ name: 'sha-1'}, new Uint8Array) }
+catch (err) { subtle = false }
+
+// Rusha inserts a global for some reason.
 delete window.Rusha
 
 function sha1 (buf, cb) {
@@ -18,21 +22,15 @@ function sha1 (buf, cb) {
     buf = uint8array(buf)
   }
 
-  var promise
-  try {
-    promise = subtle.digest({ name: 'sha-1' }, buf)
-  } catch (err) {
-    // Exception thrown when browser lacks digest support for sha-1
-    setTimeout(cb, 0, sha1sync(buf))
-    return
-  }
-
-  promise.then(function (result) {
-    cb(hex(new Uint8Array(result)))
-  }, function () {
-    // Promise will be rejected on non-secure origins. See: http://goo.gl/lq4gCo
-    cb(sha1sync(buf))
-  })
+  subtle.digest({ name: 'sha-1' }, buf)
+    .then(function succeed (result) {
+      cb(hex(new Uint8Array(result)))
+    },
+    // Promise will be rejected on non-secure origins.
+    // See: http://goo.gl/lq4gCo
+    function fail (error) {
+      cb(sha1sync(buf))
+    })
 }
 
 function sha1sync (buf) {
