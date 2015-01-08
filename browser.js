@@ -5,7 +5,7 @@ var crypto = window.crypto || window.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
 
 // Rusha inserts a global for some reason
-delete window.Rusha 
+delete window.Rusha
 
 function sha1 (buf, cb) {
   if (!subtle) {
