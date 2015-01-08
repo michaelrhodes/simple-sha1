@@ -21,6 +21,9 @@ function sha1 (buf, cb) {
   subtle.digest({ name: 'sha-1' }, buf)
     .then(function (result) {
       cb(hex(new Uint8Array(result)))
+    }, function () {
+      // Promise will be rejected on non-secure origins. See: http://goo.gl/lq4gCo
+      cb(sha1sync(buf))
     })
 }
 
