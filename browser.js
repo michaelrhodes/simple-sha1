@@ -18,13 +18,21 @@ function sha1 (buf, cb) {
     buf = uint8array(buf)
   }
 
-  subtle.digest({ name: 'sha-1' }, buf)
-    .then(function (result) {
-      cb(hex(new Uint8Array(result)))
-    }, function () {
-      // Promise will be rejected on non-secure origins. See: http://goo.gl/lq4gCo
-      cb(sha1sync(buf))
-    })
+  var promise
+  try {
+    promise = subtle.digest({ name: 'sha-1' }, buf)
+  } catch (err) {
+    // Exception thrown when browser lacks digest support for sha-1
+    setTimeout(cb, 0, sha1sync(buf))
+    return
+  }
+
+  promise.then(function (result) {
+    cb(hex(new Uint8Array(result)))
+  }, function () {
+    // Promise will be rejected on non-secure origins. See: http://goo.gl/lq4gCo
+    cb(sha1sync(buf))
+  })
 }
 
 function sha1sync (buf) {
