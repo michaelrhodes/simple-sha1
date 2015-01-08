@@ -3,6 +3,7 @@ var Rusha = require('rusha')
 var rusha = new Rusha
 var crypto = window.crypto || window.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
+var sha1sync = rusha.digest.bind(rusha)
 
 // Browsers throw if they lack support for an algorithm.
 try { subtle.digest({ name: 'sha-1'}, new Uint8Array) }
@@ -31,10 +32,6 @@ function sha1 (buf, cb) {
     function fail (error) {
       cb(sha1sync(buf))
     })
-}
-
-function sha1sync (buf) {
-  return rusha.digest(buf)
 }
 
 function uint8array (s) {
