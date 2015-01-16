@@ -13,9 +13,6 @@ try {
   })
 } catch (err) { subtle = false }
 
-// Rusha inserts a global for some reason.
-delete window.Rusha
-
 function sha1 (buf, cb) {
   if (!subtle) {
     // Use Rusha
