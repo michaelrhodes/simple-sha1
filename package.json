@@ -35,9 +35,9 @@
   },
   "devDependencies": {
     "beefy": "^2.1.1",
-    "benchmark": "^1.0.0",
+    "benchmark": "^2.1.0",
     "git-sha1": "^0.1.2",
-    "tape": "^3.0.3",
-    "zuul": "^1.16.3"
+    "tape": "^4.5.1",
+    "zuul": "^3.10.1"
   }
 }
