@@ -3,7 +3,10 @@ var Rusha = require('rusha')
 var rusha = new Rusha
 var crypto = window.crypto || window.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
-var sha1sync = rusha.digest.bind(rusha)
+
+function sha1sync (buf) {
+  return rusha.digest(buf)
+}
 
 // Browsers throw if they lack support for an algorithm.
 // Promise will be rejected on non-secure origins. (http://goo.gl/lq4gCo)
