@@ -1,7 +1,8 @@
 var Rusha = require('rusha')
 
 var rusha = new Rusha
-var crypto = window.crypto || window.msCrypto || {}
+var scope = typeof window !== 'undefined' ? window : self
+var crypto = scope.crypto || scope.msCrypto || {}
 var subtle = crypto.subtle || crypto.webkitSubtle
 
 function sha1sync (buf) {
