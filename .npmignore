@@ -1,4 +1,5 @@
-test/
+.travis.yml
+.zuul.yml
 benchmark.js
 example.js
-.zuul.yml
+test/
