@@ -1,5 +1,5 @@
 .travis.yml
-.zuul.yml
+.airtap.yml
 benchmark.js
 example.js
 test/

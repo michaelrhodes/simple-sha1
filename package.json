@@ -8,8 +8,8 @@
     "test": "npm run test-node && npm run test-browser",
     "test-local": "npm run test-node && npm run test-browser-local",
     "test-node": "tape test/*.js",
-    "test-browser": "zuul -- test/*.js",
-    "test-browser-local": "zuul --local -- test/*.js",
+    "test-browser": "airtap -- test/*.js",
+    "test-browser-local": "airtap --local -- test/*.js",
     "example": "beefy example.js",
     "benchmark": "beefy benchmark.js"
   },
@@ -34,10 +34,10 @@
     "rusha": "^0.8.1"
   },
   "devDependencies": {
+    "airtap": "0.0.5",
     "beefy": "^2.1.1",
     "benchmark": "^2.1.0",
     "git-sha1": "^0.1.2",
-    "tape": "^4.5.1",
-    "zuul": "^3.10.1"
+    "tape": "^4.5.1"
   }
 }

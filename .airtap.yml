@@ -1,4 +1,5 @@
-ui: tape
+sauce_connect: true
+loopback: airtap.local
 browsers:
   - name: chrome
     version: latest
@@ -6,13 +7,7 @@ browsers:
     version: latest
   - name: safari
     version: latest
-  - name: ie
-    version: latest
-  - name: opera
+  - name: microsoftedge
     version: latest
   - name: iphone
-    version: latest
-  - name: ipad
-    version: latest
-  - name: android
     version: latest
