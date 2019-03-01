@@ -4,6 +4,7 @@
   "description": "A simple api for generating sha1 hashes in node and the browser.",
   "main": "index.js",
   "browser": "browser.js",
+  "react-native": "index.js",
   "scripts": {
     "test": "npm run test-node && npm run test-browser",
     "test-local": "npm run test-node && npm run test-browser-local",
