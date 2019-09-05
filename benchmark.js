@@ -3,7 +3,7 @@ var gitsha1 = require('git-sha1')
 var sha1 = require('./')
 
 var size = Math.pow(2, 24)
-var buffer = new Buffer(size)
+var buffer = Buffer.alloc(size)
 
 benchmark.Suite()
   .add('sha1', function () {
@@ -32,8 +32,7 @@ function complete () {
   if (process.browser) {
     var crypto = window.crypto || window.msCrypto || {}
     var subtle = crypto.subtle || crypto.webkitSubtle
-    try { subtle.digest({ name: 'sha-1'}, new Uint8Array) }
-    catch (err) { subtle = false }
+    try { subtle.digest({ name: 'sha-1' }, new Uint8Array()) } catch (err) { subtle = false }
     if (subtle) console.log('sha1 used WebCryptoAPI')
   }
   console.log('Fastest is ' + this.filter('fastest').map('name'))
