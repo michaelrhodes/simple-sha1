@@ -35,7 +35,7 @@
     "rusha": "^0.8.1"
   },
   "devDependencies": {
-    "airtap": "0.0.5",
+    "airtap": "^2.0.4",
     "beefy": "^2.1.1",
     "benchmark": "^2.1.0",
     "git-sha1": "^0.1.2",
