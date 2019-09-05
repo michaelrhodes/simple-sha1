@@ -1,5 +1,5 @@
 var Rusha = require('rusha')
-var swrusha = require('./swrusha')
+var rushaWorkerSha1 = require('./rusha-worker-sha1')
 
 var rusha = new Rusha
 var scope = typeof window !== 'undefined' ? window : self
@@ -20,7 +20,7 @@ try {
 
 function sha1 (buf, cb) {
   if (!subtle) {
-    swrusha(buf, cb)
+    rushaWorkerSha1(buf, cb)
     return
   }
 
