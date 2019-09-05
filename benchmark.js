@@ -1,4 +1,4 @@
-var benchmark = require('benchmark')
+var benchmark = window.Benchmark = require('benchmark')
 var gitsha1 = require('git-sha1')
 var sha1 = require('./')
 
@@ -36,5 +36,5 @@ function complete () {
     catch (err) { subtle = false }
     if (subtle) console.log('sha1 used WebCryptoAPI')
   }
-  console.log('Fastest is ' + this.filter('fastest').pluck('name'))
+  console.log('Fastest is ' + this.filter('fastest').map('name'))
 }
