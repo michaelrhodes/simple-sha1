@@ -10,10 +10,9 @@ worker.onmessage = function onRushaMessage (e) {
   delete cbs[taskId]
 
   if (e.data.error != null) {
-    // This should never happen!
-    throw new Error('Rusha worker error: ' + e.data.error)
+    cb(new Error('Rusha worker error: ' + e.data.error))
   } else {
-    cb(e.data.hash)
+    cb(null, e.data.hash)
   }
 }
 

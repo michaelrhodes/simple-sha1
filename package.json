@@ -6,7 +6,7 @@
   "browser": "browser.js",
   "react-native": "index.js",
   "scripts": {
-    "test": "npm run test-node && npm run test-browser",
+    "test": "standard && npm run test-node && npm run test-browser",
     "test-local": "npm run test-node && npm run test-browser-local",
     "test-node": "tape test/*.js",
     "test-browser": "airtap -- test/*.js",
@@ -39,6 +39,7 @@
     "beefy": "^2.1.1",
     "benchmark": "^2.1.0",
     "git-sha1": "^0.1.2",
+    "standard": "^14.1.0",
     "tape": "^4.5.1"
   }
 }
