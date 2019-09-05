@@ -1,4 +1,5 @@
 var Rusha = require('rusha')
+var swrusha = require('./swrusha')
 
 var rusha = new Rusha
 var scope = typeof window !== 'undefined' ? window : self
@@ -19,8 +20,7 @@ try {
 
 function sha1 (buf, cb) {
   if (!subtle) {
-    // Use Rusha
-    setTimeout(cb, 0, sha1sync(buf))
+    swrusha(buf, cb)
     return
   }
 
