@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/michaelrhodes/simple-sha1",
   "dependencies": {
+    "queue-microtask": "^1.1.2",
     "rusha": "^0.8.1"
   },
   "devDependencies": {

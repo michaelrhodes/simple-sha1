@@ -22,15 +22,19 @@ try {
 
 function sha1 (buf, cb) {
   if (!subtle) {
-    rushaWorkerSha1(buf, function onRushaWorkerSha1 (err, hash) {
-      if (err) {
-        // On error, fallback to synchronous method which cannot fail
-        cb(sha1sync(buf))
-        return
-      }
+    if (typeof window !== 'undefined') {
+      rushaWorkerSha1(buf, function onRushaWorkerSha1 (err, hash) {
+        if (err) {
+          // On error, fallback to synchronous method which cannot fail
+          cb(sha1sync(buf))
+          return
+        }
 
-      cb(hash)
-    })
+        cb(hash)
+      })
+    } else {
+      queueMicrotask(() => cb(sha1sync(buf)))
+    }
     return
   }
 
