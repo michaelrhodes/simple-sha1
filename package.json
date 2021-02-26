@@ -1,6 +1,6 @@
 {
   "name": "simple-sha1",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "A simple api for generating sha1 hashes in node and the browser.",
   "main": "index.js",
   "browser": "browser.js",
