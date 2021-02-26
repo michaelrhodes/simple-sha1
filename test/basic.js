@@ -1,5 +1,5 @@
-var sha1 = require('../')
-var test = require('tape')
+const sha1 = require('../')
+const test = require('tape')
 
 test('sha1', function (t) {
   t.plan(2)

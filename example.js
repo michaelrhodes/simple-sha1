@@ -1,4 +1,4 @@
-var sha1 = require('./')
+const sha1 = require('./')
 
 // Because the WebCryptoAPI uses Promises (shudder),
 // you have to pass a callback if you want to take

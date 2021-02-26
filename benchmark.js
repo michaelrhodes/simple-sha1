@@ -1,9 +1,9 @@
-var benchmark = window.Benchmark = require('benchmark')
-var gitsha1 = require('git-sha1')
-var sha1 = require('./')
+const benchmark = window.Benchmark = require('benchmark')
+const gitsha1 = require('git-sha1')
+const sha1 = require('./')
 
-var size = Math.pow(2, 24)
-var buffer = Buffer.alloc(size)
+const size = Math.pow(2, 24)
+const buffer = Buffer.alloc(size)
 
 benchmark.Suite()
   .add('sha1', function () {
@@ -30,8 +30,8 @@ function cycle (e) {
 
 function complete () {
   if (process.browser) {
-    var crypto = window.crypto || window.msCrypto || {}
-    var subtle = crypto.subtle || crypto.webkitSubtle
+    const crypto = window.crypto || window.msCrypto || {}
+    let subtle = crypto.subtle || crypto.webkitSubtle
     try { subtle.digest({ name: 'sha-1' }, new Uint8Array()) } catch (err) { subtle = false }
     if (subtle) console.log('sha1 used WebCryptoAPI')
   }

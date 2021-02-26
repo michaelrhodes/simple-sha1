@@ -1,7 +1,7 @@
-var crypto = require('crypto')
+const crypto = require('crypto')
 
 function sha1 (buf, cb) {
-  var hash = sha1sync(buf)
+  const hash = sha1sync(buf)
   process.nextTick(function () {
     cb(hash)
   })

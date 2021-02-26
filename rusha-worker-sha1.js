@@ -1,8 +1,8 @@
-var Rusha = require('rusha')
+const Rusha = require('rusha')
 
-var worker
-var nextTaskId
-var cbs
+let worker
+let nextTaskId
+let cbs
 
 function init () {
   worker = Rusha.createWorker()
@@ -10,8 +10,8 @@ function init () {
   cbs = {} // taskId -> cb
 
   worker.onmessage = function onRushaMessage (e) {
-    var taskId = e.data.id
-    var cb = cbs[taskId]
+    const taskId = e.data.id
+    const cb = cbs[taskId]
     delete cbs[taskId]
 
     if (e.data.error != null) {
