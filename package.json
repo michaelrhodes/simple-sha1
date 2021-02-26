@@ -32,13 +32,13 @@
   },
   "homepage": "https://github.com/michaelrhodes/simple-sha1",
   "dependencies": {
-    "queue-microtask": "^1.1.2",
-    "rusha": "^0.8.1"
+    "queue-microtask": "^1.2.2",
+    "rusha": "^0.8.13"
   },
   "devDependencies": {
     "airtap": "^2.0.4",
-    "beefy": "^2.1.1",
-    "benchmark": "^2.1.0",
+    "beefy": "^2.1.8",
+    "benchmark": "^2.1.4",
     "git-sha1": "^0.1.2",
     "standard": "^14.1.0",
     "tape": "^4.5.1"
